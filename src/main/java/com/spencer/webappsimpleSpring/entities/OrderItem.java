@@ -1,6 +1,5 @@
 package com.spencer.webappsimpleSpring.entities;
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "order_items")
@@ -46,4 +45,3 @@ public class OrderItem {
         public OrderItem() {
         }
     }
-

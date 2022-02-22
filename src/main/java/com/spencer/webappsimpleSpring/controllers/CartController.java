@@ -1,5 +1,5 @@
 package com.spencer.webappsimpleSpring.controllers;
-
+import com.spencer.webappsimpleSpring.entities.Order;
 import com.spencer.webappsimpleSpring.entities.User;
 import com.spencer.webappsimpleSpring.services.OrderService;
 import com.spencer.webappsimpleSpring.services.UserService;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/cart")
@@ -47,8 +48,14 @@ public class CartController {
         return "redirect:/shop";
     }
 
+//    @GetMapping("/create_order")
+//    public String createOrder(Principal principal) {
+//        User user = userService.findByUsername(principal.getName());
+//        orderService.createOrderFromItems(user, cart.getItems());
+//        return "redirect:/shop";
+//    }
     @GetMapping("/create_order")
-    public String createOrder(Principal principal) {
+    public String createOrder(Principal principal){
         User user = userService.findByUsername(principal.getName());
         orderService.createOrderFromItems(user, cart.getItems());
         return "redirect:/shop";

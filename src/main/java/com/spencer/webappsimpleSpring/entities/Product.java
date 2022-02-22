@@ -1,7 +1,7 @@
 package com.spencer.webappsimpleSpring.entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -9,13 +9,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "title")
     private String title;
+
     @Column(name = "price")
     private int price;
-
-
-
 
     public Long getId() {
         return id;
@@ -41,15 +40,17 @@ public class Product {
         this.price = price;
     }
 
+    public Product() {
+    }
+
     public Product(Long id, String title, int price) {
         this.id = id;
         this.title = title;
         this.price = price;
     }
-    public Product(){}
 
     @Override
     public String toString() {
-        return String.format("Product: [id = %d, title = %s, price = %d]",id, title,price);
+        return String.format("Product: [id = %d, title = %s, price = %d]", id, title, price);
     }
 }
