@@ -14,7 +14,9 @@ public class ProductService {
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-    public Product getProductByTitle(String title){return productRepository.findOneByTitle(title);}
+    public Product getProductByTitle(String title){
+        return productRepository.findOneByTitle(title);
+    }
     public Product getProductById(Long id){
         return  productRepository.getById(id);
     }

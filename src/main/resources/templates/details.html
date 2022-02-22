@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<!--<html xmlns:th="http://www.thymeleaf.org"  lang="en">-->
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8"/>
 
@@ -15,10 +15,8 @@
 <body>
 
 <div class="container">
-
-
     <h1>Details</h1>
-    <span th:text="${selectProd.id+' '+selectProd.title+' '+selectProd.price}"></span>
+    <span th:text="${selectedProduct.id + ' ' + selectedProduct.title + ' ' + selectedProduct.price}" />
 </div>
 </body>
 </html>

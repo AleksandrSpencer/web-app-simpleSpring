@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<!--<html xmlns:th="http://www.thymeleaf.org"  lang="en">-->
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="utf-8"/>
 
@@ -15,32 +15,28 @@
 <body>
 
 <div class="container">
-
-
     <div th:replace="~{navigation :: navigation(Shop)}" />
 
     <h1>Shop</h1>
-    <span th:if="${prod.size()==0}">Products List is empty</span>
-    <table th:if="${prod.size()>0}"class = "table table-hover">
-           <thead class="thead-dark">
-           <tr>
-               <td>ID</td>
-               <td>Title</td>
-               <td>Price</td>
-               <td></td>
-               <td></td>
-           </tr>
-           </thead>
+    <span th:if="${products.size() == 0}">Products List is empty</span>
+    <table th:if="${products.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
         <tbody>
-
-        <tr th:each="product:${prod}">
+        <tr th:each="product : ${products}">
             <td th:text="${product.id}"/>
             <td th:text="${product.title}"/>
             <td th:text="${product.price}"/>
-            <td><a class="btn btn-success" th:href="@{'/details/'+ ${product.id}}">Details</a></td>
+            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${product.id}}">Details</a></td>
             <td><a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}}">Add to Cart</a></td>
-            <td><a class="btn btn-danger"   th:href="@{'/products/delete/'+ ${product.id}}">DELETE</a></td>
-
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{'/products/delete/' + ${product.id}}">Delete</a></td>
         </tr>
         </tbody>
     </table>
